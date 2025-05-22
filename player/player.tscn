@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0o6vv18wbqbu"]
+
+[ext_resource type="Texture2D" uid="uid://vcnco5hjldw" path="res://graphics/weapons/laser.png" id="1_db8ot"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_yyhsj"]
+[ext_resource type="Texture2D" uid="uid://bs1risw6ximpb" path="res://graphics/enemy/purple.png" id="2_fc5v7"]
+[ext_resource type="Texture2D" uid="uid://cq4bda8m16cgo" path="res://graphics/enemy/blue.png" id="3_rqs8m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djo6n"]
+radius = 24.3311
+
+[node name="PLayer" type="Area2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_yyhsj")
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(-1.81188e-13, -51)
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_db8ot")
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-5.96046e-08, -1.19209e-07)
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_fc5v7")
+
+[node name="Head" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_rqs8m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_djo6n")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfgdl4tg41a5l"]
+
+[ext_resource type="Script" path="res://laser/laser.gd" id="1_gaj71"]
+[ext_resource type="Texture2D" uid="uid://csfy15c3psobe" path="res://graphics/weapons/laser_light.png" id="1_po0rl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gswln"]
+radius = 2.0
+height = 64.0
+
+[node name="Laser" type="Area2D"]
+script = ExtResource("1_gaj71")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_po0rl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_gswln")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
