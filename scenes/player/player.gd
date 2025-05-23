@@ -1,7 +1,7 @@
 extends Area2D
 @export var speed = 150
 @export var cooldown = 0.25
-@export var laser_scene : PackedScene = preload("res://laser/laser.tscn")
+@export var laser_scene : PackedScene = preload("res://scenes/laser/laser.tscn")
 var can_shoot = true
 # Get viewport size
 @onready var screensize = get_viewport_rect().size

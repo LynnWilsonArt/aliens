@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0o6vv18wbqbu"]
 
 [ext_resource type="Texture2D" uid="uid://vcnco5hjldw" path="res://graphics/weapons/laser.png" id="1_db8ot"]
-[ext_resource type="Script" path="res://player/player.gd" id="1_yyhsj"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_yyhsj"]
 [ext_resource type="Texture2D" uid="uid://bs1risw6ximpb" path="res://graphics/enemy/purple.png" id="2_fc5v7"]
 [ext_resource type="Texture2D" uid="uid://cq4bda8m16cgo" path="res://graphics/enemy/blue.png" id="3_rqs8m"]
 
