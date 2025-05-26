@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd1aml5odct3r"]
+[gd_scene load_steps=7 format=3 uid="uid://bd1aml5odct3r"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_2dg70"]
 [ext_resource type="PackedScene" uid="uid://b0o6vv18wbqbu" path="res://scenes/player/player.tscn" id="3_1a7os"]
 [ext_resource type="PackedScene" uid="uid://c4ijn8nywwqp" path="res://scenes/walls/walls.tscn" id="3_nqko8"]
+[ext_resource type="PackedScene" uid="uid://dfgdl4tg41a5l" path="res://scenes/laser/laser.tscn" id="4_7v8bt"]
+[ext_resource type="PackedScene" uid="uid://beeg2n0dom2vb" path="res://scenes/enemy/enemy.tscn" id="5_qj05u"]
+[ext_resource type="PackedScene" uid="uid://dd5lma1ou8ytr" path="res://autoload/global.tscn" id="6_83tlt"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_2dg70")
-game_level = 5
 
 [node name="PLayer" parent="." instance=ExtResource("3_1a7os")]
 
 [node name="Walls" parent="." instance=ExtResource("3_nqko8")]
+
+[node name="Laser" parent="." instance=ExtResource("4_7v8bt")]
+
+[node name="Enemy" parent="." instance=ExtResource("5_qj05u")]
+
+[node name="Global" parent="." instance=ExtResource("6_83tlt")]
+
+[connection signal="enemy_died" from="Global" to="." method="_on_global_enemy_died"]

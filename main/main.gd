@@ -3,25 +3,41 @@ extends Node2D
 # Main program entry 
 # initalize some vars
 var enemy = preload("res://scenes/enemy/enemy.tscn")
-@export var num_enemies = 3
-@export var game_level = 1
-# Initilize score
-@export var score = 0
-# Set initial value of enemy for level 1
-@export var enemy_value = 5
-
+var number_enemies = Global.number_enemies
+var current_level = 1
 
 func _ready():
-	
-	
-	# Set gamve level spawn_enemies() 
-	num_enemies = num_enemies * game_level
+	# Connect signal
+	Global.enemy_died.connect(on_enemy_died)
 	spawn_enemies()
-	
-	
 	
 func spawn_enemies():
 	# Columbs of enemy
-	for x in range(num_enemies):
+	for x in range(number_enemies -1):
 		var e = enemy.instantiate()
 		add_child(e)
+
+
+func on_enemy_died() -> void:
+
+	number_enemies -= 1
+	print("enemy")
+	print(number_enemies)
+
+	if number_enemies == 0:
+		current_level +=1
+		level_up()
+		
+func level_up():
+	if current_level == 2:
+		print("level")
+		print(current_level)
+		number_enemies = 2
+		spawn_enemies()
+	if current_level == 3:
+		print("level")
+		print(current_level)
+		number_enemies =3
+		spawn_enemies()
+	
+		

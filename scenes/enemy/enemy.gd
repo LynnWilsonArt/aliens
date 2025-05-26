@@ -22,6 +22,3 @@ func get_random_direction() -> Vector2:
 	new_direction.x = [1,-1].pick_random()
 	new_direction.y = randf_range(-1,1)
 	return new_direction.normalized()
-
-
-# Kill enemy if laser hits enemy

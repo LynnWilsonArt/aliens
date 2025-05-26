@@ -1,10 +1,7 @@
 extends Area2D
-# Laser code
-
-signal enemy_dead
 
 # laser speed
-@export var speed = -3000 
+@export var speed = Global.enemy_speed
 
 # Set laser start position
 func start(pos):
@@ -18,12 +15,19 @@ func _process(delta):
 # Kill enemy if laser hits enemy
 # Add to score
 func _on_body_entered(body: Node2D) -> void:
-	print("killed enemy")
-	
-	# free laser
+	# frees the laser on a colision 
 	queue_free()
-	# free laser if it hits wall
-	if ! body.is_in_group("wall"):
+
+	# Free body when hit by laser
+	if body.is_in_group("enemies"):
 		body.queue_free()
+		# emit signal
+		Global.enemy_died.emit()
+
+			
+		
+	
+			
+		
 		
 		
