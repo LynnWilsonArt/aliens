@@ -20,9 +20,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 	# Free body when hit by laser
 	if body.is_in_group("enemies"):
-		body.queue_free()
 		# emit signal
 		Global.enemy_died.emit()
+		body.queue_free()
+		
 
 			
 		

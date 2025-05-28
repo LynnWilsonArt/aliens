@@ -6,5 +6,6 @@ signal enemy_died
 var score = 0
 var enemy_value = 5
 var enemy_speed = -3000
-var number_enemies = 1
+var number_enemies = 5          
+var player_speed = 800
 var game_over = false

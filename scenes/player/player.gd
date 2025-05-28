@@ -1,8 +1,10 @@
 extends Area2D
-@export var speed = 150
+@export var speed = Global.player_speed
 @export var cooldown = 0.25
 @export var laser_scene : PackedScene = preload("res://scenes/laser/laser.tscn")
 var can_shoot = true
+var direction = Vector2.ZERO
+
 # Get viewport size
 @onready var screensize = get_viewport_rect().size
 
@@ -13,7 +15,7 @@ func _ready() -> void:
 	start()
 	
 
-# Move ship to the bottom center of screen
+# Move player to the bottom center of screen
 func start():
 	position = Vector2(screensize.x / 2, screensize.y - 64)
 	$Timer.wait_time = cooldown
@@ -34,18 +36,40 @@ func shoot():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Handle android hud input
+	
 	# Move player ship
-	var input = Input.get_vector("left", "right", "up", "down")
+	#if direction = Input.get_vector("left", "right", "up", "down"):
 	
-	# Set ship position	
-	position += input * speed * delta
+			
+	# Set player position	
+	position += direction * speed * delta
 	
-	# Keep ship in viewport clamp(top Vector(),bottom Vector()
-	position = position.clamp(Vector2(30,30), screensize - Vector2(30,60))
+	# Keep player in viewport clamp(top Vector(),bottom Vector()
+	position = position.clamp(Vector2(30,30), screensize - Vector2(30,150))
 	# Fire laser	
 	if Input.is_action_pressed("shoot"):
 		shoot()
 	
 # Laser shooting delay timer
+# after times out sets can dhoot to true
 func _on_timer_timeout() -> void:
 	can_shoot = true
+
+
+func _on_hud_fire_laser() -> void:
+	print("fire laser")
+	shoot()
+
+
+func _on_hud_move_left() -> void:
+	direction = Vector2(-1.0,0.0)
+
+
+func _on_hud_move_right() -> void:
+	direction = Vector2(1.0,0.0)
+
+
+func _on_ui_fire_button_pressed() -> void:
+	shoot()
+	
