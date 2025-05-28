@@ -10,29 +10,39 @@
 [node name="Main" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_2dg70")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -2.0
+offset_right = 1920.0
+offset_bottom = 1078.0
+color = Color(0.172106, 0.0795399, 0.307343, 1)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 1920.0
+offset_bottom = 1078.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.58, 0.58, 0.4814, 1)
+size_flags_horizontal = 0
+
+[node name="HUD" parent="VBoxContainer" instance=ExtResource("6_kfbq2")]
+
+[node name="Laser" parent="VBoxContainer" instance=ExtResource("4_7v8bt")]
+position = Vector2(0, 2)
+
+[node name="Walls" parent="VBoxContainer" instance=ExtResource("3_nqko8")]
+visible = false
+position = Vector2(0, 2)
+
+[node name="PLayer" parent="VBoxContainer" instance=ExtResource("3_1a7os")]
+position = Vector2(0, 2)
 
 [node name="Global" parent="." instance=ExtResource("6_83tlt")]
 
-[node name="HUD" parent="." instance=ExtResource("6_kfbq2")]
-
-[node name="PLayer" parent="." instance=ExtResource("3_1a7os")]
-
-[node name="Walls" parent="." instance=ExtResource("3_nqko8")]
-
-[node name="Laser" parent="." instance=ExtResource("4_7v8bt")]
-
+[connection signal="fire_laser" from="VBoxContainer/HUD" to="VBoxContainer/PLayer" method="_on_hud_fire_laser"]
+[connection signal="move_left" from="VBoxContainer/HUD" to="VBoxContainer/PLayer" method="_on_hud_move_left"]
+[connection signal="move_right" from="VBoxContainer/HUD" to="VBoxContainer/PLayer" method="_on_hud_move_right"]
+[connection signal="start_game" from="VBoxContainer/HUD" to="." method="_on_start_button_pressed"]
 [connection signal="enemy_died" from="Global" to="." method="on_enemy_died"]
-[connection signal="fire_laser" from="HUD" to="PLayer" method="_on_hud_fire_laser"]
-[connection signal="move_left" from="HUD" to="PLayer" method="_on_hud_move_left"]
-[connection signal="move_right" from="HUD" to="PLayer" method="_on_hud_move_right"]
-[connection signal="start_game" from="HUD" to="." method="_on_start_button_pressed"]
