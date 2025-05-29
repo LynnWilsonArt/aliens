@@ -18,7 +18,7 @@ func _ready() -> void:
 
 # Move player to the bottom center of screen
 func start():
-	position = Vector2(screensize.x / 2, screensize.y - 64)
+	position = Vector2(screensize.x / 2, screensize.y - 300)
 	$Timer.wait_time = cooldown
 
 # Shoot the laser
