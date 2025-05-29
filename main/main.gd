@@ -60,8 +60,3 @@ func _on_start_button_pressed() -> void:
 	number_enemies = Global.number_enemies
 	current_level = 1
 	spawn_enemies()
-
-
-func _on_ui_fire_button_pressed() -> void:
-	print("fire")
-	show()

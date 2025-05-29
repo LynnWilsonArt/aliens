@@ -4,6 +4,7 @@ extends Area2D
 @export var laser_scene : PackedScene = preload("res://scenes/laser/laser.tscn")
 var can_shoot = true
 var direction = Vector2.ZERO
+signal start_game
 
 # Get viewport size
 @onready var screensize = get_viewport_rect().size
@@ -62,14 +63,30 @@ func _on_hud_fire_laser() -> void:
 	shoot()
 
 
-func _on_hud_move_left() -> void:
+# send start signal to main for game start
+func _on_start_button_pressed() -> void:
+	$HUD/StartButton.hide()
+	start_game.emit()
+
+
+func _on_move_left_button_button_down() -> void:
 	direction = Vector2(-1.0,0.0)
 
 
-func _on_hud_move_right() -> void:
+func _on_move_left_button_button_up() -> void:
+	direction = Vector2(0.0,0.0)
+	
+
+
+func _on_move_right_button_button_down() -> void:
 	direction = Vector2(1.0,0.0)
 
 
-func _on_ui_fire_button_pressed() -> void:
-	shoot()
-	
+
+func _on_move_right_button_button_up() -> void:
+	direction = Vector2(0.0,0.0)
+
+
+func _on_button_quit_pressed() -> void:
+	# sends out notification that app is going to quit
+	get_tree().quit()

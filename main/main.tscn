@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd1aml5odct3r"]
+[gd_scene load_steps=6 format=3 uid="uid://bd1aml5odct3r"]
 
 [ext_resource type="Script" uid="uid://dca4wlqon1uad" path="res://main/main.gd" id="1_2dg70"]
 [ext_resource type="PackedScene" uid="uid://b0o6vv18wbqbu" path="res://scenes/player/player.tscn" id="3_1a7os"]
 [ext_resource type="PackedScene" uid="uid://c4ijn8nywwqp" path="res://scenes/walls/walls.tscn" id="3_nqko8"]
 [ext_resource type="PackedScene" uid="uid://dfgdl4tg41a5l" path="res://scenes/laser/laser.tscn" id="4_7v8bt"]
 [ext_resource type="PackedScene" uid="uid://dd5lma1ou8ytr" path="res://autoload/global.tscn" id="6_83tlt"]
-[ext_resource type="PackedScene" uid="uid://dqj82fssvs5nb" path="res://scenes/hud/hud.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_2dg70")
@@ -27,8 +26,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 
-[node name="HUD" parent="VBoxContainer" instance=ExtResource("6_kfbq2")]
-
 [node name="Laser" parent="VBoxContainer" instance=ExtResource("4_7v8bt")]
 position = Vector2(0, 2)
 
@@ -41,8 +38,5 @@ position = Vector2(0, 2)
 
 [node name="Global" parent="." instance=ExtResource("6_83tlt")]
 
-[connection signal="fire_laser" from="VBoxContainer/HUD" to="VBoxContainer/PLayer" method="_on_hud_fire_laser"]
-[connection signal="move_left" from="VBoxContainer/HUD" to="VBoxContainer/PLayer" method="_on_hud_move_left"]
-[connection signal="move_right" from="VBoxContainer/HUD" to="VBoxContainer/PLayer" method="_on_hud_move_right"]
-[connection signal="start_game" from="VBoxContainer/HUD" to="." method="_on_start_button_pressed"]
+[connection signal="start_game" from="VBoxContainer/PLayer" to="." method="_on_start_button_pressed"]
 [connection signal="enemy_died" from="Global" to="." method="on_enemy_died"]
