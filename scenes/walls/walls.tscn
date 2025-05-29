@@ -19,7 +19,7 @@ position = Vector2(945.5, -2.5)
 shape = SubResource("RectangleShape2D_jctdc")
 
 [node name="Bottom" type="CollisionShape2D" parent="."]
-position = Vector2(962.75, 1088)
+position = Vector2(962.75, 850)
 shape = SubResource("RectangleShape2D_008kt")
 
 [node name="Left" type="CollisionShape2D" parent="."]
