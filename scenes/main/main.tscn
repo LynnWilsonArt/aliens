@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bd1aml5odct3r"]
 
-[ext_resource type="Script" uid="uid://dca4wlqon1uad" path="res://main/main.gd" id="1_2dg70"]
+[ext_resource type="Script" uid="uid://dca4wlqon1uad" path="res://scenes/main/main.gd" id="1_2dg70"]
 [ext_resource type="PackedScene" uid="uid://b0o6vv18wbqbu" path="res://scenes/player/player.tscn" id="3_1a7os"]
 [ext_resource type="PackedScene" uid="uid://c4ijn8nywwqp" path="res://scenes/walls/walls.tscn" id="3_nqko8"]
 [ext_resource type="PackedScene" uid="uid://dfgdl4tg41a5l" path="res://scenes/laser/laser.tscn" id="4_7v8bt"]
@@ -15,28 +15,43 @@ offset_right = 1920.0
 offset_bottom = 1078.0
 color = Color(0.172106, 0.0795399, 0.307343, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-offset_right = 1920.0
-offset_bottom = 1078.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-
-[node name="Laser" parent="VBoxContainer" instance=ExtResource("4_7v8bt")]
+[node name="Laser" parent="ColorRect" instance=ExtResource("4_7v8bt")]
 position = Vector2(0, 2)
 
-[node name="Walls" parent="VBoxContainer" instance=ExtResource("3_nqko8")]
+[node name="Walls" parent="ColorRect" instance=ExtResource("3_nqko8")]
 visible = false
 position = Vector2(0, 2)
 
-[node name="PLayer" parent="VBoxContainer" instance=ExtResource("3_1a7os")]
+[node name="PLayer" parent="ColorRect" instance=ExtResource("3_1a7os")]
 position = Vector2(0, 2)
+
+[node name="ScoreLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -522.0
+offset_right = -246.0
+offset_bottom = -467.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Score : "
+
+[node name="Score" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 1680.0
+offset_top = 18.0
+offset_right = 1704.0
+offset_bottom = 131.0
+theme_override_font_sizes/font_size = 40
+text = "0
+"
 
 [node name="Global" parent="." instance=ExtResource("6_83tlt")]
 
-[connection signal="start_game" from="VBoxContainer/PLayer" to="." method="_on_start_button_pressed"]
+[connection signal="start_game" from="ColorRect/PLayer" to="." method="_on_start_button_pressed"]
 [connection signal="enemy_died" from="Global" to="." method="on_enemy_died"]

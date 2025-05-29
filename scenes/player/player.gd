@@ -59,7 +59,6 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hud_fire_laser() -> void:
-	print("fire laser")
 	shoot()
 
 

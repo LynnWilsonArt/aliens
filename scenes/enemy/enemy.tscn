@@ -4,13 +4,13 @@
 [ext_resource type="Script" uid="uid://by2smh6i5d5b8" path="res://scenes/enemy/enemy.gd" id="1_oncpb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hggmu"]
-radius = 46.0652
+radius = 40.1995
 
 [node name="Enemy" type="RigidBody2D" groups=["enemies"]]
 script = ExtResource("1_oncpb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, -10)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_0x1ka")
 

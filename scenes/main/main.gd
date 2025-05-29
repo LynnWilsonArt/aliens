@@ -7,11 +7,15 @@ var number_enemies = Global.number_enemies
 var current_level = 1
 
 
+
 func _ready():
 	# Connect custom signal
 	Global.enemy_died.connect(on_enemy_died)
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 
+func _process(delta: float) -> void:
+	# Display score
+	$ColorRect/Score.text = str(Global.score)
 	
 func spawn_enemies():
 	# Columbs of enemy
@@ -25,17 +29,16 @@ func on_enemy_died() -> void:
 	# The number of enemies will include the main node
 	# everything must take into account the extra node
 	var enemies = get_tree().get_nodes_in_group("enemies") 
-	print("enemy died")
 	if enemies.size() -2 == 0:
 		current_level +=1
 		level_up()
 		
 func level_up():
-	print("Levelup",current_level)
 	if current_level == 2:
 		number_enemies = (Global.number_enemies *2) 
 		print("Number enemies = ",number_enemies)
 		spawn_enemies()
+		
 	if current_level == 3:
 		number_enemies =(Global.number_enemies *3)  
 		print("Number enemies = ",number_enemies)
@@ -60,3 +63,4 @@ func _on_start_button_pressed() -> void:
 	number_enemies = Global.number_enemies
 	current_level = 1
 	spawn_enemies()
+	

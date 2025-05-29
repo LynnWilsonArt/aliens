@@ -3,7 +3,7 @@ extends Node2D
 signal enemy_died
 
 #Vars
-var score = 0
+var score = 0 + 5 # 5 is to correct error and adjust value back to 0 on game start
 var enemy_value = 5
 var enemy_speed = -3000
 var number_enemies = 5          
