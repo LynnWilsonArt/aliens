@@ -23,6 +23,7 @@ func start():
 
 # Shoot the laser
 func shoot():
+		
 	if not can_shoot:
 		return
 	can_shoot = false
@@ -38,11 +39,6 @@ func shoot():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Handle android hud input
-	
-	# Move player ship
-	#if direction = Input.get_vector("left", "right", "up", "down"):
-	
-			
 	# Set player position	
 	position += direction * speed * delta
 	

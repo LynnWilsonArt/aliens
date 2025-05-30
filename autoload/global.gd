@@ -3,9 +3,11 @@ extends Node2D
 signal enemy_died
 
 #Vars
-var score = 0 + 5 # 5 is to correct error and adjust value back to 0 on game start
+const SCORE_CAL = 5
+const  GAME_OVER_TEXT: String = "Game Over!"
+var score = SCORE_CAL # calabrate for first run problem.
 var enemy_value = 5
 var enemy_speed = -3000
-var number_enemies = 5          
+var number_enemies = 5       
 var player_speed = 800
 var game_over = false

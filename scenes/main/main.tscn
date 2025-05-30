@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfgdl4tg41a5l" path="res://scenes/laser/laser.tscn" id="4_7v8bt"]
 [ext_resource type="PackedScene" uid="uid://dd5lma1ou8ytr" path="res://autoload/global.tscn" id="6_83tlt"]
 
-[node name="Main" type="Node2D" groups=["enemies"]]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_2dg70")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -50,6 +50,50 @@ offset_bottom = 131.0
 theme_override_font_sizes/font_size = 40
 text = "0
 "
+
+[node name="LevelLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.504
+anchor_bottom = 0.002
+offset_left = 256.0
+offset_top = 18.0
+offset_right = 369.32
+offset_bottom = 70.84
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Level: "
+
+[node name="Level" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.504
+anchor_bottom = 0.002
+offset_left = 392.0
+offset_top = 18.0
+offset_right = 505.32
+offset_bottom = 70.84
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "1"
+
+[node name="GameOver" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "Game Over!"
 
 [node name="Global" parent="." instance=ExtResource("6_83tlt")]
 
