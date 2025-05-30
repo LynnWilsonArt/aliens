@@ -3,6 +3,7 @@ extends Node2D
 signal enemy_died
 
 #Vars
+var game_version = 1.01
 var debug: bool = true
 const  GAME_OVER_TEXT: String = "Game Over!"
 var score: int = 0
@@ -22,17 +23,17 @@ func save_game():
 		"level": level,
 	}
 	
-	var file = FileAccess.open("res://savegame.json", FileAccess.WRITE)
+	var file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(game_data))
 	file.close()
 	
 func load_game():
 			
-	if not FileAccess.file_exists("res://savegame.json"):
+	if not FileAccess.file_exists("user://savegame.json"):
 		print("No save file found")
 		return
 
-	var file = FileAccess.open("res://savegame.json", FileAccess.READ)
+	var file = FileAccess.open("user://savegame.json", FileAccess.READ)
 	var content = file.get_as_text()
 	file.close()
 	

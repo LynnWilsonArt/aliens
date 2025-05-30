@@ -12,6 +12,7 @@ var end_of_game = Global.GAME_OVER_TEXT
 
 func _ready():
 	# Hide game over test
+	OS.request_permission("android.permission.ACTION_OPEN_DOCUMENT")
 	$ColorRect/GameOver.hide()
 	Global.load_game()	
 	print("Game loaded: ","Level  ",Global.level,"  Score: ",Global.score)
@@ -68,9 +69,6 @@ func level_up():
 		# Game over
 		$ColorRect/GameOver.text = end_of_game
 		$ColorRect/GameOver.show()
-		Global.level = 1 # reset game level
-		Global.score = 0
-	
 		
 func _on_start_button_pressed() -> void:
 
