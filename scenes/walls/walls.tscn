@@ -18,7 +18,7 @@ size = Vector2(21.25, 1094.5)
 position = Vector2(945.5, -2.5)
 shape = SubResource("RectangleShape2D_jctdc")
 
-[node name="Bottom" type="CollisionShape2D" parent="."]
+[node name="Bottom" type="CollisionShape2D" parent="." groups=["wall"]]
 position = Vector2(962.75, 850)
 shape = SubResource("RectangleShape2D_008kt")
 
