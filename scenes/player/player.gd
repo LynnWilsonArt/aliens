@@ -85,7 +85,10 @@ func _on_move_right_button_button_up() -> void:
 func _on_button_quit_pressed() -> void:
 	# sends out notification that app is going to quit
 	Global.save_game()
-	get_tree().quit()
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("window.location.href = 'https://lynnwilsonart.com/games-beta';")
+	else:
+		get_tree().quit()
 
 
 func _on_reset_game_button_pressed() -> void:

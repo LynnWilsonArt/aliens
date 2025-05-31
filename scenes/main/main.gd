@@ -11,6 +11,10 @@ var end_of_game = Global.GAME_OVER_TEXT
 
 
 func _ready():
+	# play intro and set volume
+	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer2D.volume_db = Global.volume
+
 	# Hide game over test
 	OS.request_permission("android.permission.ACTION_OPEN_DOCUMENT")
 	$ColorRect/GameOver.hide()
