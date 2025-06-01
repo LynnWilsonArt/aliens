@@ -1,7 +1,116 @@
-[gd_scene load_steps=4 format=3 uid="uid://beeg2n0dom2vb"]
+[gd_scene load_steps=20 format=3 uid="uid://beeg2n0dom2vb"]
 
-[ext_resource type="Texture2D" uid="uid://w2hxgoverbvh" path="res://graphics/enemy/fish_enemy.png" id="1_0x1ka"]
 [ext_resource type="Script" uid="uid://by2smh6i5d5b8" path="res://scenes/enemy/enemy.gd" id="1_oncpb"]
+[ext_resource type="Texture2D" uid="uid://e0cl2eawsu3g" path="res://graphics/enemy/dragon2.png" id="2_a3pup"]
+[ext_resource type="Texture2D" uid="uid://byaqub7xpnuya" path="res://graphics/enemy/dragonL.png" id="2_tjssy"]
+[ext_resource type="Texture2D" uid="uid://lbuduc6dedys" path="res://graphics/enemy/explosion.png" id="3_40wdo"]
+[ext_resource type="Texture2D" uid="uid://d37po8fpliha3" path="res://graphics/enemy/skeletonBirdR.png" id="5_cwlon"]
+[ext_resource type="Texture2D" uid="uid://5kvlxdmfvc6h" path="res://graphics/enemy/skeletonBirdL.png" id="6_nbhyu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13gj6"]
+atlas = ExtResource("2_tjssy")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4efjx"]
+atlas = ExtResource("2_tjssy")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40wdo"]
+atlas = ExtResource("2_a3pup")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjssy"]
+atlas = ExtResource("2_a3pup")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl05p"]
+atlas = ExtResource("3_40wdo")
+region = Rect2(0, 0, 174, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwlon"]
+atlas = ExtResource("3_40wdo")
+region = Rect2(174, 0, 174, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbhyu"]
+atlas = ExtResource("3_40wdo")
+region = Rect2(348, 0, 174, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvxgb"]
+atlas = ExtResource("5_cwlon")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peoo5"]
+atlas = ExtResource("5_cwlon")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f3il"]
+atlas = ExtResource("6_nbhyu")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtxhd"]
+atlas = ExtResource("6_nbhyu")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl05p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13gj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4efjx")
+}],
+"loop": true,
+"name": &"dragonLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40wdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjssy")
+}],
+"loop": true,
+"name": &"dragonRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl05p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwlon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbhyu")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvxgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peoo5")
+}],
+"loop": true,
+"name": &"skeletonBirdR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f3il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtxhd")
+}],
+"loop": true,
+"name": &"sskeletonBirdL",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hggmu"]
 radius = 40.1995
@@ -9,10 +118,12 @@ radius = 40.1995
 [node name="Enemy" type="RigidBody2D" groups=["enemies"]]
 script = ExtResource("1_oncpb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -10)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_0x1ka")
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_gl05p")
+animation = &"dragonRight"
+autoplay = "dragonLeft"
+frame_progress = 0.153197
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

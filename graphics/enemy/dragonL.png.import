@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs1risw6ximpb"
-path="res://.godot/imported/purple.png-6ab399f81931b2557241bcd5d3199317.ctex"
+uid="uid://byaqub7xpnuya"
+path="res://.godot/imported/dragonL.png-6bd326ed502d358afe358ecef100874a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/enemy/purple.png"
-dest_files=["res://.godot/imported/purple.png-6ab399f81931b2557241bcd5d3199317.ctex"]
+source_file="res://graphics/enemy/dragonL.png"
+dest_files=["res://.godot/imported/dragonL.png-6bd326ed502d358afe358ecef100874a.ctex"]
 
 [params]
 

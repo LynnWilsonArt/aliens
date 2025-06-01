@@ -13,11 +13,9 @@ func _process(delta):
 		
 # Enemy was hit
 func _on_body_entered(body: Node2D) -> void:
-	if Global.debug:
-		print("Laser -> on_body_entered() ")
-						
 	
 	if body.is_in_group("enemies"):
+		# play explosion animation
 		body.remove_from_group("enemies")
 		Global.score += Global.enemy_value
 		print("Laser -> ", Global.score)

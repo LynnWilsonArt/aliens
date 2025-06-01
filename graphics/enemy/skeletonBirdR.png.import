@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w2hxgoverbvh"
-path="res://.godot/imported/fish_enemy.png-e3e41cf320cc3f5ac4dfa1c77ac6a00a.ctex"
+uid="uid://d37po8fpliha3"
+path="res://.godot/imported/skeletonBirdR.png-d354a03239d889081cd07892dcaae4c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/enemy/fish_enemy.png"
-dest_files=["res://.godot/imported/fish_enemy.png-e3e41cf320cc3f5ac4dfa1c77ac6a00a.ctex"]
+source_file="res://graphics/enemy/skeletonBirdR.png"
+dest_files=["res://.godot/imported/skeletonBirdR.png-d354a03239d889081cd07892dcaae4c5.ctex"]
 
 [params]
 

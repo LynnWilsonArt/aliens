@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq4bda8m16cgo"
-path="res://.godot/imported/blue.png-993c90dc48375c106683220747afae3b.ctex"
+uid="uid://5kvlxdmfvc6h"
+path="res://.godot/imported/skeletonBirdL.png-325e367a212434640666a67cbd987ed0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/enemy/blue.png"
-dest_files=["res://.godot/imported/blue.png-993c90dc48375c106683220747afae3b.ctex"]
+source_file="res://graphics/enemy/skeletonBirdL.png"
+dest_files=["res://.godot/imported/skeletonBirdL.png-325e367a212434640666a67cbd987ed0.ctex"]
 
 [params]
 

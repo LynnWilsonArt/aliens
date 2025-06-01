@@ -12,8 +12,8 @@ var end_of_game = Global.GAME_OVER_TEXT
 
 func _ready():
 	# play intro and set volume
-	$AudioStreamPlayer2D.play()
-	$AudioStreamPlayer2D.volume_db = Global.volume
+	#$AudioStreamPlayer2D.play()
+	#$AudioStreamPlayer2D.volume_db = Global.volume
 
 	# Hide game over test
 	OS.request_permission("android.permission.ACTION_OPEN_DOCUMENT")
@@ -77,6 +77,7 @@ func level_up():
 func _on_start_button_pressed() -> void:
 
 	print("level: ",current_level,"Global level",Global.level)
+	print("GEnemy",Global.number_enemies," num_enemy",number_enemies)
 	current_level = Global.level
 	level_up()
 	

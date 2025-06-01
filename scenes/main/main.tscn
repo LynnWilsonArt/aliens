@@ -17,7 +17,7 @@ stream = ExtResource("6_ow5a4")
 offset_top = -2.0
 offset_right = 1920.0
 offset_bottom = 1078.0
-color = Color(0.172106, 0.0795399, 0.307343, 1)
+color = Color(0.193285, 0.0377, 0.29, 1)
 
 [node name="Laser" parent="ColorRect" instance=ExtResource("4_7v8bt")]
 position = Vector2(0, 2)
