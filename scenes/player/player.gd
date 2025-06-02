@@ -5,6 +5,7 @@ extends Area2D
 var can_shoot = true
 var direction = Vector2.ZERO
 signal start_game
+var toggle_sound = true
 
 # Get viewport size
 @onready var screensize = get_viewport_rect().size
@@ -34,6 +35,8 @@ func shoot():
 	var l = laser_scene.instantiate()
 	get_tree().root.add_child(l)	
 	l.start(position + Vector2(0,-55))
+	if toggle_sound:
+		laser_blast_sound("play")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,6 +50,7 @@ func _process(delta: float) -> void:
 	# Fire laser	
 	if Input.is_action_pressed("shoot"):
 		shoot()
+			
 	
 # Laser shooting delay timer
 # after times out sets can dhoot to true
@@ -65,22 +69,25 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_move_left_button_button_down() -> void:
+	if toggle_sound:
+		tank_move_sound("play")		
 	direction = Vector2(-1.0,0.0)
 
 
 func _on_move_left_button_button_up() -> void:
+	if toggle_sound:
+		tank_move_sound("stop")		
 	direction = Vector2(0.0,0.0)
-	
-
 
 func _on_move_right_button_button_down() -> void:
+	if toggle_sound:
+		tank_move_sound("play")
 	direction = Vector2(1.0,0.0)
 
-
-
 func _on_move_right_button_button_up() -> void:
+	if toggle_sound:
+		tank_move_sound("stop")
 	direction = Vector2(0.0,0.0)
-
 
 func _on_button_quit_pressed() -> void:
 	# sends out notification that app is going to quit
@@ -93,3 +100,25 @@ func _on_button_quit_pressed() -> void:
 
 func _on_reset_game_button_pressed() -> void:
 	Global.reset_game()
+	
+func tank_move_sound(action):
+	if action == "play":
+		$TankMoveSound.play()
+	else:
+		$TankMoveSound.stop()
+		
+func laser_blast_sound(action):
+	if action == "play":
+		$LaserBlastSound.play()
+	else :
+		$LaserBlastSound.stop()
+		
+
+
+func _on_sound_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		$HUD/SoundButton.text = "Sound On"
+		toggle_sound = true
+	else :
+		$HUD/SoundButton.text = "Sound Off"
+		toggle_sound = false

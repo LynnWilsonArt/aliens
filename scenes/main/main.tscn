@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd1aml5odct3r"]
+[gd_scene load_steps=8 format=3 uid="uid://bd1aml5odct3r"]
 
 [ext_resource type="Script" uid="uid://dca4wlqon1uad" path="res://scenes/main/main.gd" id="1_2dg70"]
 [ext_resource type="PackedScene" uid="uid://b0o6vv18wbqbu" path="res://scenes/player/player.tscn" id="3_1a7os"]
 [ext_resource type="PackedScene" uid="uid://c4ijn8nywwqp" path="res://scenes/walls/walls.tscn" id="3_nqko8"]
 [ext_resource type="PackedScene" uid="uid://dfgdl4tg41a5l" path="res://scenes/laser/laser.tscn" id="4_7v8bt"]
 [ext_resource type="PackedScene" uid="uid://dd5lma1ou8ytr" path="res://autoload/global.tscn" id="6_83tlt"]
+[ext_resource type="AudioStream" uid="uid://dwtv8nndka48d" path="res://sound/gameOver.ogg" id="6_hujxm"]
 [ext_resource type="AudioStream" uid="uid://bbdjx4jx81ub8" path="res://sound/betaAppIntro.mp3" id="6_ow5a4"]
 
 [node name="Main" type="Node2D"]
@@ -83,7 +84,10 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
 text = "1"
 
-[node name="GameOver" type="Label" parent="ColorRect"]
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="ColorRect/Level"]
+stream = ExtResource("6_hujxm")
+
+[node name="GameOverLabel" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

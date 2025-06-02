@@ -3,15 +3,15 @@ extends Node2D
 signal enemy_died
 
 #Vars
-var game_version = 1.01
-var debug: bool = true
+
 const  GAME_OVER_TEXT: String = "Game Over!"
+var game_version = 1.01
 var volume = 10 # sets volume to +2 db
 var score: int = 0
 var level: int = 1
 var enemy_value: int = 5
 var enemy_speed = -3000
-var number_enemies: int = 5  
+var number_enemies: int = 1 
 var player_speed: int = 800
 var game_over: bool = false
 var shot_missed: int = 1

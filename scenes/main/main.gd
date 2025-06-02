@@ -6,7 +6,7 @@ extends Node2D
 var enemy = preload("res://scenes/enemy/enemy.tscn")
 var number_enemies = Global.number_enemies 
 var current_level = Global.level
-var end_of_game = Global.GAME_OVER_TEXT
+var end_of_game_text = Global.GAME_OVER_TEXT
 
 
 
@@ -17,14 +17,14 @@ func _ready():
 
 	# Hide game over test
 	OS.request_permission("android.permission.ACTION_OPEN_DOCUMENT")
-	$ColorRect/GameOver.hide()
+	$ColorRect/GameOverLabel.hide()
 	Global.load_game()	
 	print("Game loaded: ","Level  ",Global.level,"  Score: ",Global.score)
 	# Connect custom signal
 	Global.enemy_died.connect(on_enemy_died)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Display score
 	$ColorRect/Score.text = str(Global.score)
 	$ColorRect/Level.text = str(Global.level)
@@ -70,9 +70,8 @@ func level_up():
 		spawn_enemies()
 		
 	if current_level == 6:
-		# Game over
-		$ColorRect/GameOver.text = end_of_game
-		$ColorRect/GameOver.show()
+		game_over()
+		
 		
 func _on_start_button_pressed() -> void:
 
@@ -82,4 +81,9 @@ func _on_start_button_pressed() -> void:
 	level_up()
 	
 
+func game_over():
+	# Game over
+	$ColorRect/GameOverLabel.text = end_of_game_text
+	$ColorRect/GameOverLabel.show()
+	$ColorRect/Level/GameOverSound.play()
 	

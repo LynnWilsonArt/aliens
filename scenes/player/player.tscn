@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0o6vv18wbqbu"]
+[gd_scene load_steps=11 format=3 uid="uid://b0o6vv18wbqbu"]
 
 [ext_resource type="Texture2D" uid="uid://vcnco5hjldw" path="res://graphics/weapons/laser.png" id="1_db8ot"]
 [ext_resource type="Script" uid="uid://duhdnr0mqh2k8" path="res://scenes/player/player.gd" id="1_yyhsj"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cccxss1gq5j18" path="res://graphics/hud/fire_button.png" id="5_p47bc"]
 [ext_resource type="Texture2D" uid="uid://cnhr3q3qc0h2i" path="res://graphics/hud/left_arrow.png" id="6_0owmy"]
 [ext_resource type="Texture2D" uid="uid://rukj614b5jax" path="res://graphics/hud/right_arrow.png" id="7_qek5x"]
+[ext_resource type="AudioStream" uid="uid://cous1fq0q7tvh" path="res://graphics/weapons/laserBlast.mp3" id="8_qek5x"]
+[ext_resource type="AudioStream" uid="uid://dxqmp3eq2m055" path="res://graphics/weapons/tankMove.ogg" id="9_5gtgg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djo6n"]
 radius = 24.3311
@@ -114,6 +116,21 @@ offset_bottom = 79.0
 theme_override_font_sizes/font_size = 40
 text = "Reset Game"
 
+[node name="SoundButton" type="Button" parent="HUD"]
+offset_left = 514.0
+offset_top = 16.0
+offset_right = 711.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 40
+toggle_mode = true
+text = "Sound On"
+
+[node name="LaserBlastSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qek5x")
+
+[node name="TankMoveSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_5gtgg")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="HUD/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="button_down" from="HUD/FireButton" to="." method="_on_hud_fire_laser"]
@@ -124,3 +141,4 @@ text = "Reset Game"
 [connection signal="button_up" from="HUD/MoveRightButton" to="." method="_on_move_right_button_button_up"]
 [connection signal="pressed" from="HUD/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="HUD/ResetGameButton" to="." method="_on_reset_game_button_pressed"]
+[connection signal="toggled" from="HUD/SoundButton" to="." method="_on_sound_button_toggled"]

@@ -6,7 +6,7 @@ extends Area2D
 # Set laser start position
 func start(pos):
 	position = pos
-	
+		
 # Velocity of laser
 func _process(delta):
 	position.y += speed * delta
