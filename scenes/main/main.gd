@@ -11,6 +11,8 @@ var end_of_game_text = Global.GAME_OVER_TEXT
 
 
 func _ready():
+	Global.load_config()
+	Global.load_game()	
 	# play intro and set volume
 	#$AudioStreamPlayer2D.play()
 	#$AudioStreamPlayer2D.volume_db = Global.volume
@@ -18,7 +20,7 @@ func _ready():
 	# Hide game over test
 	OS.request_permission("android.permission.ACTION_OPEN_DOCUMENT")
 	$ColorRect/GameOverLabel.hide()
-	Global.load_game()	
+	
 	print("Game loaded: ","Level  ",Global.level,"  Score: ",Global.score)
 	# Connect custom signal
 	Global.enemy_died.connect(on_enemy_died)
@@ -31,6 +33,7 @@ func _process(_delta: float) -> void:
 	
 func spawn_enemies():
 	# Columbs of enemy
+	print("starting enemies: ",number_enemies)
 	for x in range(number_enemies ):
 		var e = enemy.instantiate()
 		add_child(e)		
@@ -74,7 +77,7 @@ func level_up():
 		
 		
 func _on_start_button_pressed() -> void:
-
+	
 	print("level: ",current_level,"Global level",Global.level)
 	print("GEnemy",Global.number_enemies," num_enemy",number_enemies)
 	current_level = Global.level
