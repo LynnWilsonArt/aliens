@@ -23,6 +23,7 @@ func _ready():
 	
 	print("Game loaded: ","Level  ",Global.level,"  Score: ",Global.score)
 	# Connect custom signal
+	
 	Global.enemy_died.connect(on_enemy_died)
 
 
@@ -45,7 +46,7 @@ func on_enemy_died() -> void:
 
 	if enemies == 0:
 		current_level +=1
-		level_up()
+		call_deferred("level_up")
 		
 func level_up():
 	if current_level == 1:
