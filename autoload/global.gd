@@ -1,6 +1,7 @@
 extends Node2D
 # Global script
 #Signals
+@warning_ignore("unused_signal")
 signal enemy_died
 
 #Vars
